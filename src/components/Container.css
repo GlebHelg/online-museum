@@ -15,12 +15,12 @@
     min-width: 50vw;
 }
 
-.search { 
+.search-wrapper { 
     grid-area: 1 / 1 / 2 / 2; 
     border:solid;
     min-height: 20vh;
 }
-.present { 
+.present-wrapper { 
     grid-area: 2 / 1 / 3 / 2; 
     border:solid;
     min-height: 40vh;
