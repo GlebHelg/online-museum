@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Container.css';
+import {ISearchResponse} from './Interfaces/Interfaces';
+import Search from './Search/Search';
+
 
 function Container() {
-  return (
-    <div className="layout">
-        <div className="main-container">
-            <div className="search-wrapper">Search</div>
-            <div className="present-wrapper">Present</div>
+    let [searchResponse, setSearchResponse] = useState<ISearchResponse>({} as ISearchResponse);
+    let [errorMessage, setErrorMessage] = useState<string>("");
+    
+    console.log("Container errorMessage: ", errorMessage);
+
+    return (
+        <div className="layout">
+            <div className="main-container">
+                <div className="search-wrapper">
+                    <Search setSearchResponse={setSearchResponse} 
+                            setErrorMessage={setErrorMessage}/>
+                </div>
+                <div className="present-wrapper">Present</div>
+            </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default Container;
