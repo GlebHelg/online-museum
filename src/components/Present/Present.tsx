@@ -10,7 +10,7 @@ interface IPresentProps {
 function Present(props: IPresentProps) {
   return (
     <div className="present">
-      I am present
+      {JSON.stringify(props.searchResponse)}
     </div>
   );
 }

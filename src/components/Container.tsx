@@ -7,9 +7,10 @@ import Search from './Search/Search';
 
 
 function Container() {
+
     // States
     let [searchResponse, setSearchResponse] = useState<ISearchResponse>({} as ISearchResponse);
-    let [errorMessage, setErrorMessage] = useState<string>("");
+    let [errorMessage, setErrorMessage] = useState<string | null>("");
     
     console.log("Container errorMessage: ", errorMessage);
 

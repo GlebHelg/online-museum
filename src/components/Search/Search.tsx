@@ -4,19 +4,20 @@ import { ISearchResponse } from '../Interfaces/Interfaces';
 
 const querySearchApi = (                e: React.FormEvent<HTMLFormElement>, 
                         setSearchResponse: React.Dispatch<React.SetStateAction<ISearchResponse>>,
-                          setErrorMessage: React.Dispatch<React.SetStateAction<string>>
+                          setErrorMessage: React.Dispatch<React.SetStateAction<string | null>>
                         ) => {
   e.preventDefault();
 
   const searchPhrase = (e.currentTarget.elements.namedItem('search-field') as HTMLInputElement).value;
 
-  const requestString = `https://collectionapi.metmuseum.org/public/collection/v1/searc?hasImages=true&q=${searchPhrase}`;
+  const requestString = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${searchPhrase}`;
 
   axios.get(requestString)
       .then(resp => {
         const respData: ISearchResponse = resp.data as ISearchResponse;
         console.log('respData: ', respData);
         setSearchResponse(respData);
+        setErrorMessage(null);
       })
       .catch(
         (error) => {
@@ -29,7 +30,7 @@ const querySearchApi = (                e: React.FormEvent<HTMLFormElement>,
 
 interface ISearchProps {
   setSearchResponse: React.Dispatch<React.SetStateAction<ISearchResponse>>,
-  setErrorMessage: React.Dispatch<React.SetStateAction<string>>
+  setErrorMessage: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 function Search(props: ISearchProps) {

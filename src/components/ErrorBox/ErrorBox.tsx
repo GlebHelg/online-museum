@@ -3,16 +3,19 @@ import { isPropertySignature } from 'typescript';
 import './ErrorBox.css';
 
 interface IErrorBoxProps {
-    errorMessage: string
+    errorMessage: string | null
 }
 
 function ErrorBox(props: IErrorBoxProps) {
 
     console.log('Error Message: ', props.errorMessage);
+
+    const errorJsx = <div className="error-box">
+                        <p>{props.errorMessage}</p>
+                    </div>;
+
     return (
-        <div className="error-box">
-            <p>{props.errorMessage}</p>
-        </div>
+        props.errorMessage ? errorJsx : <></>
     );
 }
 
