@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useMemo } from 'react';
 import { IObjectResponse } from '../../Interfaces/Interfaces';
 import {ContainerContext} from '../../Container';
 
@@ -37,6 +37,11 @@ function PresentationObject(props: IPresentationObjectProps) {
     const [presentationObject, setPresentationObject] = useState<IObjectResponse>({} as IObjectResponse);
     const setErrorMessage = useContext(ContainerContext);
     const countRef = useRef(0);
+
+
+    useMemo(() => countRef.current=0, [props.objectId]) 
+
+
 
     //console.log('setErrorMessage: ', setErrorMessage);
     console.log('presentationObject: ', presentationObject);
