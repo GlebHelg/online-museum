@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useContext, useRef, useMemo } from 'react';
 import { IObjectResponse } from '../../Interfaces/Interfaces';
 import {ContainerContext} from '../../Container';
-
+import './PresentationObject.css';
 
 const getPresentationObject = ( oid: number, 
                                 setPresentationObject: React.Dispatch<React.SetStateAction<IObjectResponse>>,
@@ -37,8 +37,6 @@ function PresentationObject(props: IPresentationObjectProps) {
     const [presentationObject, setPresentationObject] = useState<IObjectResponse>({} as IObjectResponse);
     const setErrorMessage = useContext(ContainerContext);
     const countRef = useRef(0);
-
-
     useMemo(() => countRef.current=0, [props.objectId]) 
 
 
@@ -55,7 +53,7 @@ function PresentationObject(props: IPresentationObjectProps) {
 
     return (
         <div className="presentation-object">
-            {props.objectId}
+            <img src={presentationObject.primaryImage} />
         </div>
     );
 }

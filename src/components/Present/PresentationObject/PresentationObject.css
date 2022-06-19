@@ -1,0 +1,7 @@
+.presentation-object{
+    max-width: 50px;
+}
+
+.presentation-object > img {
+    max-width: 150px;
+}
