@@ -10,7 +10,7 @@ interface IPresentProps {
 
 function Present(props: IPresentProps) {
 
-  console.log('Present: ', JSON.stringify(props.searchResponse));
+  //console.log('Present: ', JSON.stringify(props.searchResponse));
 
   let presentationObject: number;
   if(props.searchResponse.objectIDs){
