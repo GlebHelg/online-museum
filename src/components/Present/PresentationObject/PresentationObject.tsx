@@ -42,12 +42,12 @@ function PresentationObject(props: IPresentationObjectProps) {
 
 
     //console.log('setErrorMessage: ', setErrorMessage);
-    console.log('presentationObject: ', presentationObject);
+    //console.log('presentationObject: ', presentationObject);
     
-    console.log('countRef.current: ', countRef.current);
+    //console.log('countRef.current: ', countRef.current);
 
     if(countRef.current == 0){
-        console.log('Doing getPresObj');
+        //console.log('Doing getPresObj');
         getPresentationObject(props.objectId, setPresentationObject, setErrorMessage as React.Dispatch<React.SetStateAction<string | null>>, countRef);
     }
 

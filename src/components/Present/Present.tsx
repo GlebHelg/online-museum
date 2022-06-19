@@ -15,20 +15,20 @@ function Present(props: IPresentProps) {
 
   const [currentObjects, setCurrentObjects] = useState<number[]>([]);
 
-  let presentationObject: JSX.Element;
-  if(props.searchResponse.objectIDs){
-    presentationObject = <PresentationObject objectId={props.searchResponse.objectIDs[0]}/>;
+  let presentationObject: JSX.Element[];
+  if(currentObjects.length > 0){
+    presentationObject = currentObjects.map((currentObj, idx)=> <PresentationObject key={idx} objectId={currentObj}/>);
   }
   else{
     //presentationObject = <></>;
-    presentationObject = <PresentationObject objectId={360837}/>;
+    presentationObject = [0].map(() => <PresentationObject objectId={360837}/>);
   }
 
-
+  console.log('currentObjects: ', currentObjects)
   return (
     <div className="present">
       {presentationObject}
-      <Pagination currentObjects={currentObjects} setCurrentObjects={setCurrentObjects}/>
+      <Pagination currentObjects={currentObjects} setCurrentObjects={setCurrentObjects} allObjects={props.searchResponse.objectIDs}/>
     </div>
   );
 }
