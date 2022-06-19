@@ -12,18 +12,18 @@ function Present(props: IPresentProps) {
 
   //console.log('Present: ', JSON.stringify(props.searchResponse));
 
-  let presentationObject: number;
+  let presentationObject: JSX.Element;
   if(props.searchResponse.objectIDs){
-    presentationObject = props.searchResponse.objectIDs[0];
+    presentationObject = <PresentationObject objectId={props.searchResponse.objectIDs[0]}/>;
   }
   else{
-    presentationObject = 0;
+    presentationObject = <></>;
   }
 
 
   return (
     <div className="present">
-      <PresentationObject objectId={presentationObject}/>
+      {presentationObject}
     </div>
   );
 }

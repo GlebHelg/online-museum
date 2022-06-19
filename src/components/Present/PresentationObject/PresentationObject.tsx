@@ -43,7 +43,7 @@ function PresentationObject(props: IPresentationObjectProps) {
     
     console.log('countRef.current: ', countRef.current);
 
-    if(countRef.current <= 1){
+    if(countRef.current == 0){
         console.log('Doing getPresObj');
         getPresentationObject(props.objectId, setPresentationObject, setErrorMessage as React.Dispatch<React.SetStateAction<string | null>>, countRef);
     }
