@@ -1,8 +1,16 @@
 import React from 'react';
+import { ISearchResponse } from '../Interfaces/Interfaces';
 
-function Present() {
+
+interface IPresentProps {
+  searchResponse: ISearchResponse
+}
+
+
+function Present(props: IPresentProps) {
   return (
     <div className="present">
+      I am present
     </div>
   );
 }
