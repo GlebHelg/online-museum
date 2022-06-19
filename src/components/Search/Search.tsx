@@ -20,10 +20,9 @@ const querySearchApi = (                e: React.FormEvent<HTMLFormElement>,
       })
       .catch(
         (error) => {
-          console.log('Error has occured');
+          console.log('Error has occured: ', error);
           // setErrorMessage
-          setErrorMessage(error);
-          return Promise.reject(error);
+          setErrorMessage("The request went bad... Try a different searchword or something :)");
         }
       );
 }

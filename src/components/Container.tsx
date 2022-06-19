@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Container.css';
+import ErrorBox from './ErrorBox/ErrorBox';
 import {ISearchResponse} from './Interfaces/Interfaces';
 import Search from './Search/Search';
 
@@ -12,12 +13,17 @@ function Container() {
 
     return (
         <div className="layout">
+            <div className="error-box-wrapper">
+                <ErrorBox errorMessage={errorMessage} />
+            </div>
             <div className="main-container">
                 <div className="search-wrapper">
                     <Search setSearchResponse={setSearchResponse} 
                             setErrorMessage={setErrorMessage}/>
                 </div>
-                <div className="present-wrapper">Present</div>
+                <div className="present-wrapper">
+                    Present
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,6 @@
+.error-box{
+    border: solid;
+    color: red;
+    max-width: 90%;
+    margin: 0 auto;
+}
