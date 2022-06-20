@@ -20,13 +20,13 @@ function Pagination(props: IPaginationProps) {
     }
 
     const pagesCount = Math.ceil(imagesCount / 9);
-    // console.log('imagesCount: ', imagesCount)
-    // console.log('pagesCount: ', pagesCount)
+    console.log('imagesCount: ', imagesCount)
+    console.log('pagesCount: ', pagesCount)
 
     let allPageButtons: JSX.Element[];
     let activePageButtons: JSX.Element[] = [];
 
-    const pagesArray = Array.from(Array(pagesCount+1).keys()).slice(1, -1)
+    const pagesArray = Array.from(Array(pagesCount+1).keys()).slice(1, pagesCount+1)
 
     
     allPageButtons = pagesArray.map(pageNum => <button key={pageNum} onClick={
@@ -49,7 +49,7 @@ function Pagination(props: IPaginationProps) {
         }
         else if(props.activePage == 3){
             activePageButtons.push(allPageButtons[0])
-            allPageButtons.slice(props.activePage, props.activePage+1)
+            allPageButtons.slice(props.activePage-2, props.activePage+1)
                           .forEach(elem => activePageButtons.push(elem))
             activePageButtons.push(<span>...</span>)
             activePageButtons.push(allPageButtons[allPageButtons.length-1])
@@ -90,6 +90,7 @@ function Pagination(props: IPaginationProps) {
         }
     }
     else{
+        console.log('ALL PAGE BUTTONS', allPageButtons)
         activePageButtons = allPageButtons
     }
 
