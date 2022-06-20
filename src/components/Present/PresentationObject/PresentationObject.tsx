@@ -55,7 +55,9 @@ function PresentationObject(props: IPresentationObjectProps) {
         <div className="presentation-object">
             <a href={presentationObject.objectURL}>
                 <h5>{presentationObject.objectName}</h5>
-                <img src={presentationObject.primaryImage} />
+                <div>
+                    <img src={presentationObject.primaryImage} />
+                </div>
             </a>
         </div>
     );
