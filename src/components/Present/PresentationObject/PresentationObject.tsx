@@ -11,11 +11,11 @@ const getPresentationObject = ( oid: number,
     const requestString = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${oid}`;
 
     countRef.current++;
-    console.log('Doing axios.get');
+    //console.log('Doing axios.get');
     axios.get(requestString)
         .then(resp => {
             const respData: IObjectResponse = resp.data as IObjectResponse;
-            console.log('respData PresentationObject: ', respData);
+            //console.log('respData PresentationObject: ', respData);
             setPresentationObject(respData);
             setErrorMessage(null);
         })
@@ -44,7 +44,7 @@ function PresentationObject(props: IPresentationObjectProps) {
     //console.log('setErrorMessage: ', setErrorMessage);
     //console.log('presentationObject: ', presentationObject);
     
-    console.log('countRef.current: ', countRef.current);
+    //console.log('countRef.current: ', countRef.current);
 
     if(countRef.current == 0){
         //console.log('Doing getPresObj');

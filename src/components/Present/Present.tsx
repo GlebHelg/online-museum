@@ -12,31 +12,36 @@ interface IPresentProps {
 function Present(props: IPresentProps) {
 
   //console.log('Present: ', JSON.stringify(props.searchResponse));
-
   const [currentObjects, setCurrentObjects] = useState<number[]>([]);
+  const [activePage, setActivePage] = useState<number>(1);
   useMemo(() => {
-    console.log('In MEMO');
     if(props.searchResponse.objectIDs?.length > 0){
-      setCurrentObjects(props.searchResponse.objectIDs.slice(0, 9));
+      setCurrentObjects(props.searchResponse.objectIDs.slice((activePage-1)*9, activePage*9));
     }
   },[props.searchResponse.objectIDs]);
+
+  useMemo(() => {
+    if(props.searchResponse.objectIDs?.length > 0){
+      setCurrentObjects(props.searchResponse.objectIDs.slice((activePage-1)*9, activePage*9));
+    }
+  },[activePage]);
 
 
   let presentationObjects: JSX.Element[];
   if(currentObjects.length > 0){
-    presentationObjects = currentObjects.map((currentObj, idx)=> <PresentationObject key={idx} objectId={currentObj}/>);
+    presentationObjects = currentObjects.map((currentObjs, idx)=> <PresentationObject key={idx} objectId={currentObjs}/>);
   }
   else{
     presentationObjects = [<></>];
   }
 
-  console.log('currentObjects: ', currentObjects)
+  //console.log('currentObjects: ', currentObjects)
   return (
     <>
       <div className="present">
         {presentationObjects}
       </div>
-      <Pagination currentObjects={currentObjects} setCurrentObjects={setCurrentObjects} allObjects={props.searchResponse.objectIDs}/>
+      <Pagination activePage={activePage} setActivePage={setActivePage} allObjects={props.searchResponse.objectIDs}/>
     </>
   );
 }
