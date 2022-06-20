@@ -28,8 +28,19 @@ function Pagination(props: IPaginationProps) {
     const pagesArray = Array.from(Array(pagesCount+1).keys()).slice(1, -1)
 
     
-    pageButtons = pagesArray.map(pageNum => <button key={pageNum} onClick={() => props.setCurrentObjects(props.allObjects.slice((pageNum-1)*9, pageNum*9))}>{pageNum}</button>)
+    pageButtons = pagesArray.map(pageNum => <button key={pageNum} onClick={
+                                                () => {
+                                                    props.setCurrentObjects(props.allObjects.slice((pageNum-1)*9, pageNum*9))
+                                                    setPage(pageNum)
+                                                }}>{pageNum}
+                                            </button>)
 
+    if(pageButtons.length > 5){
+        // 3 pageButtons
+        // pageButtons
+        // 1 ... button
+        // max 3 siste buttons
+    }
 
 
     return (

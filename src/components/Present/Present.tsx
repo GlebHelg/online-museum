@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { IObjectResponse, ISearchResponse } from '../Interfaces/Interfaces';
 import Pagination from './Pagination/Pagination';
 import './Present.css';
@@ -14,21 +14,27 @@ function Present(props: IPresentProps) {
   //console.log('Present: ', JSON.stringify(props.searchResponse));
 
   const [currentObjects, setCurrentObjects] = useState<number[]>([]);
+  useMemo(() => {
+    console.log('In MEMO');
+    if(props.searchResponse.objectIDs?.length > 0){
+      setCurrentObjects(props.searchResponse.objectIDs.slice(0, 9));
+    }
+  },[props.searchResponse.objectIDs]);
 
-  let presentationObject: JSX.Element[];
+
+  let presentationObjects: JSX.Element[];
   if(currentObjects.length > 0){
-    presentationObject = currentObjects.map((currentObj, idx)=> <PresentationObject key={idx} objectId={currentObj}/>);
+    presentationObjects = currentObjects.map((currentObj, idx)=> <PresentationObject key={idx} objectId={currentObj}/>);
   }
   else{
-    //presentationObject = <></>;
-    presentationObject = [0].map(() => <PresentationObject objectId={360837}/>);
+    presentationObjects = [<></>];
   }
 
   console.log('currentObjects: ', currentObjects)
   return (
     <>
       <div className="present">
-        {presentationObject}
+        {presentationObjects}
       </div>
       <Pagination currentObjects={currentObjects} setCurrentObjects={setCurrentObjects} allObjects={props.searchResponse.objectIDs}/>
     </>
