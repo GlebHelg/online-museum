@@ -44,7 +44,7 @@ function PresentationObject(props: IPresentationObjectProps) {
     //console.log('setErrorMessage: ', setErrorMessage);
     //console.log('presentationObject: ', presentationObject);
     
-    //console.log('countRef.current: ', countRef.current);
+    console.log('countRef.current: ', countRef.current);
 
     if(countRef.current == 0){
         //console.log('Doing getPresObj');
@@ -53,7 +53,10 @@ function PresentationObject(props: IPresentationObjectProps) {
 
     return (
         <div className="presentation-object">
-            <img src={presentationObject.primaryImage} />
+            <a href={presentationObject.objectURL}>
+                <h5>{presentationObject.objectName}</h5>
+                <img src={presentationObject.primaryImage} />
+            </a>
         </div>
     );
 }

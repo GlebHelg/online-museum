@@ -25,7 +25,7 @@ function Pagination(props: IPaginationProps) {
 
     let pageButtons: JSX.Element[];
 
-    const pagesArray = Array.from(Array(pagesCount).keys())
+    const pagesArray = Array.from(Array(pagesCount+1).keys()).slice(1, -1)
 
     
     pageButtons = pagesArray.map(pageNum => <button key={pageNum} onClick={() => props.setCurrentObjects(props.allObjects.slice((pageNum-1)*9, pageNum*9))}>{pageNum}</button>)

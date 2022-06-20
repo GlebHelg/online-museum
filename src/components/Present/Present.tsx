@@ -26,10 +26,12 @@ function Present(props: IPresentProps) {
 
   console.log('currentObjects: ', currentObjects)
   return (
-    <div className="present">
-      {presentationObject}
+    <>
+      <div className="present">
+        {presentationObject}
+      </div>
       <Pagination currentObjects={currentObjects} setCurrentObjects={setCurrentObjects} allObjects={props.searchResponse.objectIDs}/>
-    </div>
+    </>
   );
 }
 

@@ -1,7 +1,24 @@
 .presentation-object{
-    max-width: 50px;
+    flex: 100%;
+    
+    border: 2px solid black;
+    aspect-ratio: 3/3;
+    box-sizing: border-box;
+    background-color: #eee;
 }
 
-.presentation-object > img {
-    max-width: 150px;
+@media(min-width: 768px){
+    .presentation-object{
+        flex: 33%;
+        max-width: 33%;
+    }
+}
+
+.presentation-object img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    /* aspect-ratio: 3/3;
+    width: 100%;
+    height: 100%; */
 }
